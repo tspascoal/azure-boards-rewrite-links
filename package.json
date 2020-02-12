@@ -1,0 +1,21 @@
+{
+  "name": "azure-devops-rewrite-links",
+  "version": "1.0.0",
+  "description": "Rewrites work items certain link types based on a query",
+  "main": "reqrite-links.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "compile": "tsc --outdir . --declarationDir typings"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "azure-devops-node-api": "^10.0.0",
+    "colors": "^1.4.0",
+    "yargs": "^15.1.0"
+  },
+  "devDependencies": {
+    "@types/yargs": "^15.0.1",
+    "@types/node": "^13.1.8"
+  }
+}

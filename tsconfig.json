@@ -1,0 +1,17 @@
+{
+    "compilerOptions": {
+        "target": "es2015",
+        "module": "commonjs",
+        "moduleResolution": "node",
+        "declaration": true,
+        "typeRoots": [
+            "node_modules/@types",
+            "typings"
+        ]
+    },
+    "files": ["src/rewrite-links.ts"],
+    "exclude": [
+        "node_modules",
+        "typings"
+    ]
+}
