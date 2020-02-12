@@ -60,8 +60,6 @@ export async function run(organizationUrl: string, projectName: string, planName
     } else {
         common.result(`Query returned ${topLevelWorkItems.length} top level items.`);
 
-        return;
-
         let numberWorkItemsUpdated = 0;
         let numberLinksUpdated = 0;
         for (var item in topLevelWorkItems) {
@@ -113,7 +111,7 @@ export async function run(organizationUrl: string, projectName: string, planName
 
             if (operations.length > 0) {
                 jsonPatch = operations;
-                
+
                 const result = await witApi.updateWorkItem(null, jsonPatch, workItem.id);
                 numberWorkItemsUpdated++;
                 numberLinksUpdated += numberChanges;
