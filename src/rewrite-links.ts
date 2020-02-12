@@ -119,7 +119,7 @@ export async function run(organizationUrl: string, projectName: string, planName
 
             }
         }
-        console.log(Colors.green(`Updated ${numberLinksUpdated} links in ${numberWorkItemsUpdated}`));
+        console.log(Colors.green(`Updated ${numberLinksUpdated} links in ${numberWorkItemsUpdated} work item(s).`));
     }
 }
 
