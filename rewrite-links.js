@@ -53,7 +53,6 @@ function run(organizationUrl, projectName, planName, queryName, relationType, ke
         }
         else {
             common.result(`Query returned ${topLevelWorkItems.length} top level items.`);
-            return;
             let numberWorkItemsUpdated = 0;
             let numberLinksUpdated = 0;
             for (var item in topLevelWorkItems) {
