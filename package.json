@@ -7,7 +7,11 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "compile": "tsc --outdir . --declarationDir typings"
   },
-  "author": "",
+  "author": "Tiago Pascoal",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tspascoal/azure-devops-rewrite-links"
+  },
   "license": "MIT",
   "dependencies": {
     "azure-devops-node-api": "^10.0.0",
