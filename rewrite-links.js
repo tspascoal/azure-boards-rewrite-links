@@ -98,7 +98,7 @@ function run(organizationUrl, projectName, planName, queryName, relationType, ke
                     common.result(Colors.green(`Updated ${numberChanges} link(s)`));
                 }
             }
-            console.log(Colors.green(`Updated ${numberLinksUpdated} links in ${numberWorkItemsUpdated}`));
+            console.log(Colors.green(`Updated ${numberLinksUpdated} links in ${numberWorkItemsUpdated} work item(s).`));
         }
     });
 }
