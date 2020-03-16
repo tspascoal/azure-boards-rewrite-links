@@ -2,7 +2,7 @@
   "name": "azure-devops-rewrite-links",
   "version": "1.0.0",
   "description": "Rewrites work items certain link types based on a query",
-  "main": "reqrite-links.js",
+  "main": "rewrite-links.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "compile": "tsc --outdir . --declarationDir typings"
