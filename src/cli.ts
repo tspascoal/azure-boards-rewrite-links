@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 
 import * as common from './common';
 import * as nodeApi from 'azure-devops-node-api';

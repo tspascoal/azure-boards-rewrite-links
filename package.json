@@ -1,6 +1,6 @@
 {
   "name": "azure-boards-rewrite-links",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Rewrites work items certain link types based on a query",
   "main": "cli.js",
   "scripts": {
