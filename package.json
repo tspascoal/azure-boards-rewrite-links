@@ -1,25 +1,28 @@
 {
-  "name": "azure-devops-rewrite-links",
+  "name": "azure-boards-rewrite-links",
   "version": "1.0.0",
   "description": "Rewrites work items certain link types based on a query",
-  "main": "rewrite-links.js",
+  "main": "cli.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "compile": "tsc --outdir . --declarationDir typings"
+    "compile": "tsc"
   },
   "author": "Tiago Pascoal",
   "repository": {
     "type": "git",
-    "url": "https://github.com/tspascoal/azure-devops-rewrite-links"
+    "url": "https://github.com/tspascoal/azure-boards-rewrite-links"
   },
   "license": "MIT",
+  "bin": {
+    "az-boards-rewrite-links": "cli.js"
+  },
   "dependencies": {
     "azure-devops-node-api": "^10.0.0",
     "colors": "^1.4.0",
     "yargs": "^15.1.0"
   },
   "devDependencies": {
-    "@types/yargs": "^15.0.1",
+    "@types/yargs": "^15.0.4",
     "@types/node": "^13.1.8"
   }
 }

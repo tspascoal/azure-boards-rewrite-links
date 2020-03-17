@@ -7,9 +7,11 @@
         "typeRoots": [
             "node_modules/@types",
             "typings"
-        ]
+        ],
+        "declarationDir": "typings",
+        "outDir": "build"
     },
-    "files": ["src/rewrite-links.ts"],
+    "files": ["src/cli.ts"],
     "exclude": [
         "node_modules",
         "typings"
