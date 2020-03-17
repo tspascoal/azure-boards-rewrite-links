@@ -1,6 +1,6 @@
 {
   "name": "azure-boards-rewrite-links",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Rewrites work items certain link types based on a query",
   "main": "cli.js",
   "scripts": {
@@ -14,7 +14,7 @@
   },
   "license": "MIT",
   "bin": {
-    "az-boards-rewrite-links": "cli.js"
+    "az-boards-rewrite-links": "build/cli.js"
   },
   "dependencies": {
     "azure-devops-node-api": "^10.0.0",
