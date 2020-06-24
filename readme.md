@@ -25,6 +25,7 @@ Set an environment variable called API_TOKEN with the value of the token
 
 In windows use
 > set API_TOKEN=XXXXXX
+
 In Linux use
 > export API_TOKEN=XXXXXX
 
