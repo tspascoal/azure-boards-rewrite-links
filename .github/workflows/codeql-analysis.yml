@@ -45,3 +45,25 @@ jobs:
         sarif_file: azure-boards-rewrite-links.sarif
       if: always()
 
+  Lint:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - run: npm ci
+    - run: npm run compile
+
+    # for now we will ignore linting errors
+    - name: run eslint
+      run: npx eslint src --ext .ts -f @microsoft/eslint-formatter-sarif -o azure-boards-rewrite-links.sarif
+      continue-on-error: true
+
+    - name: Upload lint results (SARIF)
+      uses: github/codeql-action/upload-sarif@v1
+      with:
+        sarif_file: azure-boards-rewrite-links.sarif
+      if: always()
+
