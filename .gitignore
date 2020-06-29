@@ -41,3 +41,5 @@ typings/
 lib/*.js
 test/*.js
 *.map
+
+.sarif
