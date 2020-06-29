@@ -9,9 +9,10 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.result = exports.heading = exports.getWebApi = void 0;
 const vm = require("azure-devops-node-api");
 function getEnv(name) {
-    let val = process.env[name];
+    const val = process.env[name];
     if (!val) {
         console.error(`${name} env var not set`);
         process.exit(1);
@@ -20,20 +21,25 @@ function getEnv(name) {
 }
 function getWebApi(serverUrl) {
     return __awaiter(this, void 0, void 0, function* () {
-        return new Promise((resolve, reject) => __awaiter(this, void 0, void 0, function* () {
+        return new Promise((resolve, reject) => {
             try {
-                let token = getEnv("API_TOKEN");
-                let authHandler = vm.getPersonalAccessTokenHandler(token);
-                let option = undefined;
-                let vsts = new vm.WebApi(serverUrl, authHandler, option);
-                let connData = yield vsts.connect();
-                console.log(`Hello ${connData.authenticatedUser.providerDisplayName} you are connected to ${serverUrl}`);
-                resolve(vsts);
+                const token = getEnv("API_TOKEN");
+                const authHandler = vm.getPersonalAccessTokenHandler(token);
+                const option = undefined;
+                const vsts = new vm.WebApi(serverUrl, authHandler, option);
+                vsts.connect()
+                    .then((connData) => {
+                    console.log(`Hello ${connData.authenticatedUser.providerDisplayName} you are connected to ${serverUrl}`);
+                    resolve(vsts);
+                })
+                    .catch((err) => {
+                    console.error("failed connecting", err);
+                });
             }
             catch (err) {
                 reject(err);
             }
-        }));
+        });
     });
 }
 exports.getWebApi = getWebApi;

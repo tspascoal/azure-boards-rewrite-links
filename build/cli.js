@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 "use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
@@ -9,13 +10,12 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.run = void 0;
 const common = require("./common");
 const WorkItemTrackingInterfaces = require("azure-devops-node-api/interfaces/WorkItemTrackingInterfaces");
 const VSSInterfaces_1 = require("azure-devops-node-api/interfaces/common/VSSInterfaces");
 const Colors = require("colors/safe");
-function getSuiteTitlePrefix(requirementId) {
-    return `[${requirementId}]`;
-}
+const yargs = require("yargs");
 function getQuery(witApi, project, queryName) {
     return __awaiter(this, void 0, void 0, function* () {
         common.heading(`Getting query ${queryName}`);
@@ -40,7 +40,7 @@ function getTopLevelItems(witApi, query) {
             .sort((a, b) => a.target.id - b.target.id);
     });
 }
-function run(organizationUrl, projectName, planName, queryName, relationType, keepOriginalComment) {
+function run(organizationUrl, projectName, queryName, relationType, keepOriginalComment) {
     return __awaiter(this, void 0, void 0, function* () {
         const webApi = yield common.getWebApi(organizationUrl);
         const witApi = yield webApi.getWorkItemTrackingApi();
@@ -55,22 +55,22 @@ function run(organizationUrl, projectName, planName, queryName, relationType, ke
             common.result(`Query returned ${topLevelWorkItems.length} top level items.`);
             let numberWorkItemsUpdated = 0;
             let numberLinksUpdated = 0;
-            for (var item in topLevelWorkItems) {
+            for (const item in topLevelWorkItems) {
                 const workItemId = topLevelWorkItems[item].target.id;
                 let jsonPatch;
-                let operations = [];
+                const operations = [];
                 const workItem = yield witApi.getWorkItem(workItemId, null, null, WorkItemTrackingInterfaces.WorkItemExpand.Relations);
                 common.heading(`Examining ${workItemId} ${workItem.fields["System.Title"]}`);
                 let relationCounter = 0;
                 let numberChanges = 0;
-                for (var rel in workItem.relations) {
+                for (const rel in workItem.relations) {
                     const relation = workItem.relations[rel];
                     if (relationType.includes(relation.rel)) {
                         let newComment = `Migration: original link type ${relation.attributes['name']}.`;
                         if (keepOriginalComment && relation.attributes['comment']) {
                             newComment += ` Original comment: ${relation.attributes['comment']}`;
                         }
-                        let operationAdd = {
+                        const operationAdd = {
                             op: VSSInterfaces_1.Operation.Add,
                             path: "/relations/-",
                             value: {
@@ -81,7 +81,7 @@ function run(organizationUrl, projectName, planName, queryName, relationType, ke
                                 }
                             }
                         };
-                        let operationRemove = {
+                        const operationRemove = {
                             op: VSSInterfaces_1.Operation.Remove,
                             path: `/relations/${relationCounter}`
                         };
@@ -92,7 +92,7 @@ function run(organizationUrl, projectName, planName, queryName, relationType, ke
                 }
                 if (operations.length > 0) {
                     jsonPatch = operations;
-                    const result = yield witApi.updateWorkItem(null, jsonPatch, workItem.id);
+                    yield witApi.updateWorkItem(null, jsonPatch, workItem.id);
                     numberWorkItemsUpdated++;
                     numberLinksUpdated += numberChanges;
                     common.result(Colors.green(`Updated ${numberChanges} link(s)`));
@@ -108,9 +108,8 @@ if (process.env["API_TOKEN"] === null) {
     console.error("You need to define an environment variable called API_TOKEN with your Personal access token (PAT)");
     process.exit(-3);
 }
-const yargs = require('yargs');
-const argv = require('yargs')
-    .usage('Usage: $0 -org organizationUrl -plan planName -query queryName')
+const argv = yargs.options({})
+    .usage('Usage: $0 -org organizationUrl -p projectName -relType [list of rel ids] -query queryName -keepOriginalComment true|false')
     .demandOption(['org', 'project', 'query', 'relType'])
     .alias('org', 'organization')
     .alias('p', 'project')
@@ -127,4 +126,4 @@ const argv = require('yargs')
     description: 'keep original comment'
 })
     .argv;
-run(argv.org, argv.project, argv.plan, argv.query, argv.relType, argv.keepOriginalComment);
+run(argv.org, argv.project, argv.query, argv.relType, argv.keepOriginalComment);

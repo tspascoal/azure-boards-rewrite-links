@@ -2,7 +2,7 @@ import * as vm from "azure-devops-node-api";
 import * as lim from "azure-devops-node-api/interfaces/LocationsInterfaces";
 
 function getEnv(name: string): string {
-    let val = process.env[name];
+    const val = process.env[name];
     if (!val) {
         console.error(`${name} env var not set`);
         process.exit(1);
@@ -11,16 +11,21 @@ function getEnv(name: string): string {
 }
 
 export async function getWebApi(serverUrl: string): Promise<vm.WebApi> {
-    return new Promise<vm.WebApi>(async (resolve, reject) => {
+    return new Promise<vm.WebApi>((resolve, reject) => {
         try {
-            let token = getEnv("API_TOKEN");
-            let authHandler = vm.getPersonalAccessTokenHandler(token);
-            let option = undefined;
+            const token = getEnv("API_TOKEN");
+            const authHandler = vm.getPersonalAccessTokenHandler(token);
+            const option = undefined;
 
-            let vsts: vm.WebApi = new vm.WebApi(serverUrl, authHandler, option);
-            let connData: lim.ConnectionData = await vsts.connect();
-            console.log(`Hello ${connData.authenticatedUser.providerDisplayName} you are connected to ${serverUrl}`);
-            resolve(vsts);
+            const vsts: vm.WebApi = new vm.WebApi(serverUrl, authHandler, option);
+            vsts.connect()
+                .then((connData: lim.ConnectionData) => {
+                    console.log(`Hello ${connData.authenticatedUser.providerDisplayName} you are connected to ${serverUrl}`);
+                    resolve(vsts);
+                })
+                .catch((err) => {
+                    console.error("failed connecting", err)
+                });
         }
         catch (err) {
             reject(err);
