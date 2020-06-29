@@ -1,4 +1,4 @@
-name: "Code scanning - action"
+name: "Code scanning"
 
 on:
   push:
@@ -33,3 +33,12 @@ jobs:
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v1
+
+    - run: npx eslint src --ext .ts -f @microsoft/eslint-formatter-sarif -o azure-boards-rewrite-links.sarif
+
+    - name: Upload lint result (SARIF)
+      uses: github/codeql-action/upload-sarif@v1
+      with:
+        sarif_file: azure-boards-rewrite-links.sarif
+
+
