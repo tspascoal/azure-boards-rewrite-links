@@ -1,0 +1,9 @@
+{
+    "eslint.workingDirectories": [
+        {
+            "directory": "./src",
+            "changeProcessCWD": true
+        }
+    ],
+    "eslint.probe" : ["typescript"]
+}
