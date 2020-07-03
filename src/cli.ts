@@ -130,9 +130,7 @@ if (process.env["API_TOKEN"] === null) {
     process.exit(-3);
 }
 
-
-
-
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const argv: any = yargs.options({ })
     .usage('Usage: $0 -org organizationUrl -p projectName -relType [list of rel ids] -query queryName -keepOriginalComment true|false')
     .demandOption(['org', 'project', 'query', 'relType'])
