@@ -1,8 +1,8 @@
 name: "Code scanning"
 
 on:
-  push:
-  pull_request:
+  push: master
+  pull_request: master
 
 jobs:
   CodeQL-Build:
