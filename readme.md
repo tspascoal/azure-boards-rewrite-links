@@ -8,7 +8,7 @@ Links that are not be specified will be left unchanged (multiple link types can 
 
 
 ![npm](https://img.shields.io/npm/v/azure-boards-rewrite-links) ![CI Build](https://github.com/tspascoal/azure-boards-rewrite-links/workflows/Code%20scanning/badge.svg)
-
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=azure-boards-rewrite-links&metric=alert_status)](https://sonarcloud.io/dashboard?id=azure-boards-rewrite-links)
 
 ## Pre requirements
 
