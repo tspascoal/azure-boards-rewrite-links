@@ -108,6 +108,7 @@ if (process.env["API_TOKEN"] === null) {
     console.error("You need to define an environment variable called API_TOKEN with your Personal access token (PAT)");
     process.exit(-3);
 }
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const argv = yargs.options({})
     .usage('Usage: $0 -org organizationUrl -p projectName -relType [list of rel ids] -query queryName -keepOriginalComment true|false')
     .demandOption(['org', 'project', 'query', 'relType'])
