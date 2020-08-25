@@ -46,6 +46,9 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v2
+      with:
+        fetch-depth: 2
+
 
     - run: npm ci
     - run: npm run build
