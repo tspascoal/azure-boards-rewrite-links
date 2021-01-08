@@ -1,15 +1,14 @@
 #!/usr/bin/env node
 
 import * as common from './common'
-import * as nodeApi from 'azure-devops-node-api'
+import * as nodeApi from 'azure-devops-node-api' // eslint-disable-line @typescript-eslint/no-unused-vars
+import * as WorkItemTrackingApi from 'azure-devops-node-api/WorkItemTrackingApi' // eslint-disable-line @typescript-eslint/no-unused-vars
 
-import * as WorkItemTrackingApi from 'azure-devops-node-api/WorkItemTrackingApi'
-
-import * as CoreApi from 'azure-devops-node-api/CoreApi'
+import * as CoreApi from 'azure-devops-node-api/CoreApi' // eslint-disable-line @typescript-eslint/no-unused-vars
 import * as WorkItemTrackingInterfaces from 'azure-devops-node-api/interfaces/WorkItemTrackingInterfaces'
-import * as CoreInterfaces from 'azure-devops-node-api/interfaces/CoreInterfaces'
+import * as CoreInterfaces from 'azure-devops-node-api/interfaces/CoreInterfaces' // eslint-disable-line @typescript-eslint/no-unused-vars
 
-import { JsonPatchDocument, JsonPatchOperation, Operation } from "azure-devops-node-api/interfaces/common/VSSInterfaces"
+import { JsonPatchDocument, JsonPatchOperation, Operation } from "azure-devops-node-api/interfaces/common/VSSInterfaces" // eslint-disable-line @typescript-eslint/no-unused-vars
 
 
 import Colors = require('colors/safe')

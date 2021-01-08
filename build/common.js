@@ -9,7 +9,6 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.result = exports.heading = exports.getWebApi = void 0;
 const vm = require("azure-devops-node-api");
 function getEnv(name) {
     const val = process.env[name];

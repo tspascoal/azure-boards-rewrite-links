@@ -1,5 +1,5 @@
 import * as vm from "azure-devops-node-api"
-import * as lim from "azure-devops-node-api/interfaces/LocationsInterfaces"
+import * as lim from "azure-devops-node-api/interfaces/LocationsInterfaces" // eslint-disable-line @typescript-eslint/no-unused-vars
 
 function getEnv(name: string): string {
     const val = process.env[name]
