@@ -10,10 +10,9 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.run = void 0;
 const common = require("./common");
 const WorkItemTrackingInterfaces = require("azure-devops-node-api/interfaces/WorkItemTrackingInterfaces");
-const VSSInterfaces_1 = require("azure-devops-node-api/interfaces/common/VSSInterfaces");
+const VSSInterfaces_1 = require("azure-devops-node-api/interfaces/common/VSSInterfaces"); // eslint-disable-line @typescript-eslint/no-unused-vars
 const Colors = require("colors/safe");
 const yargs = require("yargs");
 function getQuery(witApi, project, queryName) {
