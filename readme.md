@@ -37,7 +37,6 @@ The token is NOT persisted anywhere so you need to set it every time you start a
 
 > Note if you have installed the package locally and not globally you need to make sure that `node_modules/.bin` (relative to install path) is on path.
 
-
 ## Usage
 
 az-boards-rewrite-links --org https://dev.azure.com/XXXX --project projectName --query "My Queries/Rewrite Query" --relType System.LinkTypes.Hierarchy-Forward System.LinkTypes.Duplicate-Forward
