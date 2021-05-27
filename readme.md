@@ -40,3 +40,5 @@ The token is NOT persisted anywhere so you need to set it every time you start a
 ## Usage
 
 az-boards-rewrite-links --org https://dev.azure.com/XXXX --project projectName --query "My Queries/Rewrite Query" --relType System.LinkTypes.Hierarchy-Forward System.LinkTypes.Duplicate-Forward
+
+
